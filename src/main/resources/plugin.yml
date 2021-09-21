@@ -4,3 +4,7 @@ main: net.kunmc.lab.yaxisreverser.YAxisReverser
 api-version: 1.16
 commands:
   yaxisreversal:
+    permission: op
+    usage: |-
+      /yaxisreversal run [distance]
+      /yaxisreversal numberOfExecutions [IntegerValue]
