@@ -19,8 +19,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class CommandHandler implements TabExecutor {
-    private final Map<Long, Boolean> chunkKeyBooleanMap = new HashMap<>();
-
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length < 1) {
@@ -60,13 +58,6 @@ public class CommandHandler implements TabExecutor {
                 int latency = 0;
                 for (int i = 0; i < chunkList.size(); i++) {
                     Chunk chunk = chunkList.get(i);
-                    long chunkKey = chunk.getChunkKey();
-                    if (chunkKeyBooleanMap.getOrDefault(chunkKey, false)) {
-                        log(sender, String.format(ChatColor.GREEN + "%d/%d chunks completed", numberOfCompleted.addAndGet(1), chunkList.size()));
-                        continue;
-                    }
-                    chunkKeyBooleanMap.put(chunkKey, true);
-
                     new BukkitRunnable() {
                         @Override
                         public void run() {
