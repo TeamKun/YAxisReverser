@@ -67,11 +67,6 @@ public class CommandHandler implements TabExecutor {
                     }
                     chunkKeyBooleanMap.put(chunkKey, true);
 
-                    if (!chunk.getBlock(0, 0, 0).getType().equals(Material.BEDROCK)) {
-                        log(sender, String.format(ChatColor.GREEN + "%d/%d chunks completed", numberOfCompleted.addAndGet(1), chunkList.size()));
-                        continue;
-                    }
-
                     new BukkitRunnable() {
                         @Override
                         public void run() {
